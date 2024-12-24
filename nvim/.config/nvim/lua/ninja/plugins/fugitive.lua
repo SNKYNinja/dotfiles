@@ -1,7 +1,7 @@
 return {
-    {  -- Vim Fugitive (Git)
+    { -- Vim Fugitive (Git)
         "tpope/vim-fugitive",
-        config = function ()
+        config = function()
             -- Open Git status with <leader>gs, but only if inside a Git repository
             vim.keymap.set("n", "<leader>gs", function()
                 local handle = io.popen("git rev-parse --is-inside-work-tree 2>/dev/null")
@@ -13,7 +13,7 @@ return {
                 else
                     -- Display a friendly error message with an icon
                     vim.notify("Not inside a Git repository", vim.log.levels.ERROR, {
-                        icon = "",  -- Git icon from Nerd Fonts
+                        icon = "", -- Git icon from Nerd Fonts
                         title = "Git Error"
                     })
                 end

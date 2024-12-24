@@ -43,7 +43,7 @@ return {
                     local item = harpoon_config.create_list_item(harpoon_config, entry[1])
                     list:add(item)
 
-                    local filetype = vim.fn.fnamemodify(entry.path, ":e")  -- Get file extension
+                    local filetype = vim.fn.fnamemodify(entry.path, ":e") -- Get file extension
                     local icon, _ = devicons.get_icon(entry.path, filetype, { default = true })
 
                     vim.notify(string.format("%s Added to Harpoon: %s", icon, entry.path), vim.log.levels.INFO, {
@@ -51,7 +51,7 @@ return {
                         timeout = 2000,
                     })
 
-                    actions.close(prompt_bufnr) -- Close Telescope
+                    actions.close(prompt_bufnr)                                                  -- Close Telescope
                 else
                     local warn_icon, _ = devicons.get_icon("warning", "txt", { default = true }) -- Use "warning" icon or a default one
                     vim.notify(string.format("%s No file selected to add to Harpoon", warn_icon), vim.log.levels.WARN, {
@@ -76,7 +76,7 @@ return {
                     vim.api.nvim_buf_call(ctx.buf, function()
                         vim.fn.matchadd("TelescopeParent", "\t\t.*$")
                         vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-                        end
+                    end
                     )
                 end,
             })
@@ -94,7 +94,7 @@ return {
                         path_display = formattedName,
                         mappings = {
                             n = {
-                            ["x"] = actions.delete_buffer,
+                                ["x"] = actions.delete_buffer,
                             },
                         },
                     },
@@ -160,7 +160,7 @@ return {
                     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
                 }
             }
-            
+
             -- Optionally, you can add additional keybindings for your Telescope commands
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[S]earch [H]elp' })
             vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -175,7 +175,9 @@ return {
             vim.keymap.set('n', '<C-p>', builtin.git_files, {})
             vim.keymap.set('n', '<leader>ps', function()
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
-                end
-            ) end
+            end
+            )
+        end
     },
 }
+
