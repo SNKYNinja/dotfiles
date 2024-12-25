@@ -13,10 +13,6 @@ return
         vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end,
             { desc = "[A]dd current file to Harpoon list" })
 
-        -- Toggle Harpoon quick menu with <C-e>
-        vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-            { desc = "Toggle Harpoon quick menu" })
-
         -- Select specific file from Harpoon list with <C-h>, <C-t>, <C-n>, and <C-s>
         vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end,
             { desc = "Select first file in Harpoon list" })
