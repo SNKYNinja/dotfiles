@@ -1,6 +1,6 @@
-require("ninja.lazy")
-require("ninja.remap")
-require("ninja.autocmd")
+require("ninja.config.lazy")
+require("ninja.config.remap")
+require("ninja.config.autocmd")
 
 -- Set <space> as the leader key
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)

@@ -22,7 +22,7 @@ return {
             -- Useful for getting pretty icons, but requires a Nerd Font.
             { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
             -- Trouble integration
-            -- { "folke/trouble.nvim" },
+            { "folke/trouble.nvim" },
         },
         config = function()
             -- Enable line numbers in Telescope previewer for better context.
@@ -180,4 +180,3 @@ return {
         end
     },
 }
-
