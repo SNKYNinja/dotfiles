@@ -4,6 +4,7 @@ return {
         dependencies = {
             "rafamadriz/friendly-snippets",
             "onsails/lspkind.nvim",
+            "hrsh7th/nvim-cmp",
         },
         version = "*",
         ---@module "blink.cmp"
@@ -11,7 +12,7 @@ return {
         opts = {
 
             appearance = {
-                use_nvim_cmp_as_default = false,
+                use_nvim_cmp_as_default = true,
                 nerd_font_variant = "mono",
             },
 
@@ -20,11 +21,15 @@ return {
 
                 documentation = {
                     auto_show = true,
-                    auto_show_delay_ms = 250,
+                    auto_show_delay_ms = 150,
                     treesitter_highlighting = true,
-                    window = { border = "rounded" },
+                    window = {
+                        border = "rounded",
+                        winblend = 0,
+                        max_width = 50,
+                        max_height = 15,
+                    },
                 },
-
                 list = {
                     selection = function(ctx)
                         return ctx.mode == "cmdline" and "auto_insert" or "preselect"
@@ -32,7 +37,7 @@ return {
                 },
                 menu = {
                     border = "rounded",
-
+                    winblend = 0,
                     cmdline_position = function()
                         if vim.g.ui_cmdline_pos ~= nil then
                             local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
@@ -43,31 +48,23 @@ return {
                     end,
 
                     draw = {
-                        columns = {
-                            { "kind_icon", "label", gap = 1 },
-                            { "kind" },
-                        },
+                        -- columns = {
+                        --     { "kind_icon", "label", "label_description", gap = 1 },
+                        --     { "kind" },
+                        -- },
+                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
                         components = {
                             kind_icon = {
-                                text = function(item)
-                                    local kind = require("lspkind").symbol_map[item.kind] or ""
-                                    return kind .. " "
-                                end,
-                                highlight = "CmpItemKind",
+                                -- text = function(item)
+                                --     local kind = require("lspkind").symbol_map[item.kind] or ""
+                                --     return kind .. " "
+                                -- end,
+                                -- highlight = "BlinkCmpKindDefault",
                             },
-                            label = {
-                                text = function(item)
-                                    return item.label
-                                end,
-                                highlight = "CmpItemAbbr",
-                            },
-                            kind = {
-                                text = function(item)
-                                    return item.kind
-                                end,
-                                highlight = "CmpItemKind",
-                            },
+                            label = { width = { max = 30 } },
+                            label_description = { width = { max = 20 } },
                         },
+                        treesitter = { "lsp" },
                     },
                 },
             },
@@ -104,10 +101,14 @@ return {
             -- Experimental signature help support
             signature = {
                 enabled = true,
-                window = { border = "rounded" },
+                window = {
+                    border = "rounded",
+                    winblend = 0,
+                    scrollbar = false,
+                },
                 trigger = {
-                    show_on_insert_on_trigger_character = true
-                }
+                    show_on_insert_on_trigger_character = true,
+                },
             },
 
             sources = {
@@ -141,5 +142,5 @@ return {
                 },
             },
         },
-    }
+    },
 }

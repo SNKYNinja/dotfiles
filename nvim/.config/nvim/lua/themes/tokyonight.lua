@@ -1,7 +1,8 @@
 return {
     {
-        "folke/tokyonight.nvim",
-        lazy = false,    -- Load immediately (not lazily)
+        "whoop-t/tokyonight.nvim",
+        -- "folke/tokyonight.nvim",
+        lazy = false, -- Load immediately (not lazily)
         priority = 1100, -- Highest priority to load first
         config = function()
             require("tokyonight").setup({
@@ -17,21 +18,20 @@ return {
                     floats = "normal",
                 },
                 day_brightness = 0.3, -- Adjusts brightness for the day style (0 to 1)
-                dim_inactive = true,  -- Dims inactive windows
-                lualine_bold = true,  -- Bold section headers in lualine theme
+                dim_inactive = true, -- Dims inactive windows
+                lualine_bold = true, -- Bold section headers in lualine theme
                 cache = true,
                 plugins = {
                     all = not package.loaded.lazy, -- Enable all plugins if not using lazy.nvim
-                    auto = true,                   -- Automatically enable needed plugins for lazy.nvim
+                    auto = true, -- Automatically enable needed plugins for lazy.nvim
                 },
                 on_colors = function(colors) end,
                 terminal_colors = true,
                 on_highlights = function(highlights, colors) end,
-
             })
 
             -- Apply the colorscheme
             vim.cmd.colorscheme("tokyonight")
         end,
-    }
+    },
 }

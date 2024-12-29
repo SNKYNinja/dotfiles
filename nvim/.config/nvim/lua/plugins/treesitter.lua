@@ -36,6 +36,8 @@ return {
                     "dockerfile",
                     "gitignore",
                 },
+                ignore_install = {},
+                modules = {},
             })
         end,
     },

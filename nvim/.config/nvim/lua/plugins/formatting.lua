@@ -5,6 +5,8 @@ return {
         config = function()
             local conform = require("conform")
 
+            local clang_format_path = "/home/ninja/.clang-format"
+
             conform.setup({
                 formatters_by_ft = {
                     javascript = { "prettier" },
@@ -24,7 +26,10 @@ return {
                 format_on_save = {
                     lsp_fallback = true,
                     async = false,
-                    timeout_ms = 500
+                    timeout_ms = 500,
+                },
+                formatters = {
+                    clang_format = { "--style=file:" .. clang_format_path },
                 },
             })
 
@@ -35,6 +40,12 @@ return {
                     timeout_ms = 500,
                 })
             end, { desc = "[M]ake [Pretty]" })
-        end
-    }
+        end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end,
+    },
 }

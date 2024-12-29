@@ -27,6 +27,8 @@ require("lazy").setup({
 
         { "petertriho/nvim-scrollbar" }, -- Scrollbar
 
+        { "windwp/nvim-ts-autotag" },
+
         { import = "plugins" },
     },
     change_detection = {
