@@ -5,7 +5,10 @@ return {
         config = function()
             local conform = require("conform")
 
-            local clang_format_path = "/home/ninja/.clang-format"
+            -- NOTE: Add your .clang-format file path to your shell (.bashrc/.zshrc)
+
+            -- Example: export CLANG_FORMAT_PATH="$HOME/.clang-format"
+            local clang_format_path = vim.fn.getenv("CLANG_FORMAT_PATH") or "/"
 
             conform.setup({
                 formatters_by_ft = {
