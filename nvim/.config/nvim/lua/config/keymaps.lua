@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Set the netrw file explorer to open with <leader>e
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open [P]roject [V]iew (Netrw)" })
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open [P]roject [V]iew (Netrw)" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })

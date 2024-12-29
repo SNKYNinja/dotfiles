@@ -5,7 +5,7 @@ return {
         event = "VimEnter",
         branch = "0.1.x",
         dependencies = {
-            { "nvim-lua/plenary.nvim" },
+            "nvim-lua/plenary.nvim",
             { -- If encountering errors, see telescope-fzf-native README for installation instructions
                 "nvim-telescope/telescope-fzf-native.nvim",
 
@@ -22,7 +22,8 @@ return {
             -- Useful for getting pretty icons, but requires a Nerd Font.
             { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
             -- Trouble integration
-            { "folke/trouble.nvim" },
+            "folke/trouble.nvim",
+            "folke/todo-comments.nvim",
         },
         config = function()
             -- Enable line numbers in Telescope previewer for better context.
@@ -51,7 +52,7 @@ return {
                         timeout = 2000,
                     })
 
-                    actions.close(prompt_bufnr)                                                  -- Close Telescope
+                    actions.close(prompt_bufnr) -- Close Telescope
                 else
                     local warn_icon, _ = devicons.get_icon("warning", "txt", { default = true }) -- Use "warning" icon or a default one
                     vim.notify(string.format("%s No file selected to add to Harpoon", warn_icon), vim.log.levels.WARN, {
@@ -76,13 +77,12 @@ return {
                     vim.api.nvim_buf_call(ctx.buf, function()
                         vim.fn.matchadd("TelescopeParent", "\t\t.*$")
                         vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-                    end
-                    )
+                    end)
                 end,
             })
 
             -- Telescope setup with icon customization
-            telescope.setup {
+            telescope.setup({
                 pickers = {
                     find_files = {
                         path_display = formattedName,
@@ -158,25 +158,25 @@ return {
                     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
                     -- Developer configurations: Not meant for general override
                     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-                }
-            }
+                },
+            })
 
             -- Optionally, you can add additional keybindings for your Telescope commands
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[S]earch [F]iles' })
-            vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-            vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-            vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[S]earch [R]esume' })
-            vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-            vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-            vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-            vim.keymap.set('n', '<leader>ps', function()
+            vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+            vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+            vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[S]earch [F]iles" })
+            vim.keymap.set("n", "<leader>fs", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+            vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+            vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+            vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+            vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[S]earch [R]esume" })
+            vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+            vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "[S]earch Todos" })
+            vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+            vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+            vim.keymap.set("n", "<leader>ps", function()
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
-            end
-            )
-        end
+            end)
+        end,
     },
 }

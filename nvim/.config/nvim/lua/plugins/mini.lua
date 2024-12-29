@@ -27,7 +27,7 @@ return {
                 set_vim_settings = true,
                 content = {
                     inactive = nil,
-                }
+                },
             })
 
             -- You can configure sections in the statusline by overriding their
@@ -38,9 +38,11 @@ return {
                 return "%2l:%-2v"
             end
 
+            -- Auto pair mini plugin
+            require("mini.pairs").setup()
+
             -- ... and there is more!
             --  Check out: https://github.com/echasnovski/mini.nvim
         end,
     },
 }
-
