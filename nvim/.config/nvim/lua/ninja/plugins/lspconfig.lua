@@ -20,8 +20,9 @@ return {
             -- import lspconfig plugin
             local lspconfig = require("lspconfig")
 
-            -- import mason_lspconfig plugin
-            local mason_lspconfig = require("mason-lspconfig")
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                border = "rounded",
+            })
 
             local on_attach = function(_, bufnr)
                 -- Keybindings for LSP
@@ -99,38 +100,10 @@ return {
                 capabilities = capabilities,
             }
 
-
-            -- lspconfig["clangd"].setup {
-            --     on_attach = on_attach,
-            --     capabilities = capabilities,
-            -- }
-
-            vim.api.nvim_create_autocmd("LspAttach", {
-                callback = function(args)
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    if not client then return end
-
-                    -- if client.supports_method("textDocument/completion") then
-                    --     -- Enable auto-completion
-                    --     vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-                    -- end
-
-                    --@diagnostic disable-next-line: missing-parameter
-                    if client.supports_method("textDocument/formatting") then
-                        -- Format the current buffer on save
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            buffer = args.buf,
-                            callback = function()
-                                vim.lsp.buf.format({
-                                    bufnr =
-                                        args.buf,
-                                    id = client.id
-                                })
-                            end,
-                        })
-                    end
-                end
-            })
+            lspconfig["clangd"].setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
+            }
         end,
     },
 }

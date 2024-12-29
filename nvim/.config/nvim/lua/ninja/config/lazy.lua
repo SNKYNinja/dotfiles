@@ -28,9 +28,11 @@ require("lazy").setup({
             dependencies = { "nvim-lua/plenary.nvim" },
             opts = { signs = false },
         },
-        { "tpope/vim-sleuth" },      -- Vim Sleuth (Detect tabstop and shiftwidth automatically)
+        { "tpope/vim-sleuth" },          -- Vim Sleuth (Detect tabstop and shiftwidth automatically)
 
-        { "numToStr/Comment.nvim" }, -- Commenting plugin
+        { "numToStr/Comment.nvim" },     -- Commenting plugin
+
+        { "petertriho/nvim-scrollbar" }, -- Scrollbar
 
         { import = "ninja.plugins" },
     },

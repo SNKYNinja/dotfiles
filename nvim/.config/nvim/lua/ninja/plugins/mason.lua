@@ -27,7 +27,7 @@ return {
                     "emmet_ls",
                     "lua_ls",
                     "pyright",
-                    -- "clangd",
+                    "clangd",
                 },
                 automatic_installation = true,
             })
