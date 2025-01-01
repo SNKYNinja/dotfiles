@@ -13,7 +13,7 @@ return {
                 sync_install = false, -- Install parsers asynchronously
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = false,
+                    additional_vim_regex_highlighting = true,
                 },
                 auto_tag = {
                     enable = true,
@@ -35,6 +35,7 @@ return {
                     "markdown_inline",
                     "dockerfile",
                     "gitignore",
+                    "json",
                 },
                 ignore_install = {},
                 modules = {},

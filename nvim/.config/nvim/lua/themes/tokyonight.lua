@@ -3,7 +3,7 @@ return {
         "whoop-t/tokyonight.nvim",
         -- "folke/tokyonight.nvim",
         lazy = false, -- Load immediately (not lazily)
-        priority = 1100, -- Highest priority to load first
+        priority = 110, -- Highest priority to load first
         config = function()
             require("tokyonight").setup({
                 style = "storm",
@@ -25,9 +25,9 @@ return {
                     all = not package.loaded.lazy, -- Enable all plugins if not using lazy.nvim
                     auto = true, -- Automatically enable needed plugins for lazy.nvim
                 },
-                on_colors = function(colors) end,
+                -- on_colors = function(colors) end,
                 terminal_colors = true,
-                on_highlights = function(highlights, colors) end,
+                -- on_highlights = function(highlights, colors) end,
             })
 
             -- Apply the colorscheme
