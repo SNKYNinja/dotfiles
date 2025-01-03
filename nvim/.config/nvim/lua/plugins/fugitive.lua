@@ -14,10 +14,10 @@ return {
                     -- Display a friendly error message with an icon
                     vim.notify("Not inside a Git repository", vim.log.levels.ERROR, {
                         icon = "", -- Git icon from Nerd Fonts
-                        title = "Git Error"
+                        title = "Git Error",
                     })
                 end
-            end, { desc = "[G]it [S]tatus (only if inside a Git repository)" })
-        end
-    }
+            end, { desc = "[G]it [S]tatus" })
+        end,
+    },
 }

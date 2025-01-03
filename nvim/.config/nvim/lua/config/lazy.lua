@@ -25,8 +25,6 @@ require("lazy").setup({
 
         { "tpope/vim-sleuth" }, -- Vim Sleuth (Detect tabstop and shiftwidth automatically)
 
-        { "petertriho/nvim-scrollbar" }, -- Scrollbar
-
         { "windwp/nvim-ts-autotag" },
 
         { import = "plugins" },

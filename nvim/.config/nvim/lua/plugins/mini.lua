@@ -41,6 +41,9 @@ return {
             -- Auto pair mini plugin
             require("mini.pairs").setup()
 
+            -- Move any selection in any direction
+            require("mini.move").setup()
+
             -- ... and there is more!
             --  Check out: https://github.com/echasnovski/mini.nvim
         end,
