@@ -6,7 +6,7 @@ return {
         priority = 110, -- Highest priority to load first
         config = function()
             require("tokyonight").setup({
-                style = "storm",
+                style = "night",
                 light_style = "day",
                 transparent = false,
                 styles = {
