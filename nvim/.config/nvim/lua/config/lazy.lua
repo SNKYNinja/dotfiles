@@ -27,6 +27,8 @@ require("lazy").setup({
 
         { "windwp/nvim-ts-autotag" },
 
+        { "wakatime/vim-wakatime", lazy = false },
+
         { import = "plugins" },
     },
     change_detection = {
