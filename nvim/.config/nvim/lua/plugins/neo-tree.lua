@@ -53,7 +53,7 @@ return {
                     },
                 },
                 window = {
-                    position = "left",
+                    position = "right",
                     width = 30,
                 },
                 default_component_configs = {
