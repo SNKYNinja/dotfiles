@@ -25,11 +25,12 @@ return {
                     python = { "isort", "black" },
                     c = { "clang-format" },
                     cpp = { "clang-format" },
+                    java = { "google-java-format" },
                 },
                 format_on_save = {
                     lsp_fallback = true,
                     async = false,
-                    timeout_ms = 500,
+                    timeout_ms = 2000,
                 },
                 formatters = {
                     clang_format = { "--style=file:" .. clang_format_path },
@@ -49,6 +50,10 @@ return {
                             "prettier.config.cjs",
                             "prettier.config.mjs",
                         }),
+                    },
+                    ["google-java-format"] = {
+                        -- prepend_args = { "--aosp" }, -- Ensure 4-space indentation
+                        prepend_args = {},
                     },
                 },
             })

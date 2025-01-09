@@ -29,6 +29,8 @@ require("lazy").setup({
 
         { "wakatime/vim-wakatime", lazy = false },
 
+        { "christoomey/vim-tmux-navigator" },
+
         { import = "plugins" },
     },
     change_detection = {

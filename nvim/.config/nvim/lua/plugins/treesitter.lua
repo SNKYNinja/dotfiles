@@ -36,6 +36,7 @@ return {
                     "dockerfile",
                     "gitignore",
                     "json",
+                    "java",
                 },
                 ignore_install = {},
                 modules = {},

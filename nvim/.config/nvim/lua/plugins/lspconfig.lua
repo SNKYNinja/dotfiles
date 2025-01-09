@@ -14,7 +14,7 @@ return {
                     },
                 },
             },
-            "saghen/blink.cmp",
+            { "saghen/blink.cmp" },
         },
         config = function()
             -- import lspconfig plugin
@@ -53,7 +53,7 @@ return {
             end
 
             -- used to enable autocompletion (assign to every lsp server config)
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- Change the Diagnostic symbols in the sign column (gutter)
             -- (not in youtube nvim video)
@@ -63,47 +63,37 @@ return {
                 vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
             end
 
+            -- Define LSP servers
+            local servers = {
+                ts_ls = {},
+                html = {},
+                cssls = {},
+                tailwindcss = {},
+                emmet_ls = {
+                    filetypes = {
+                        "html",
+                        "typescriptreact",
+                        "javascriptreact",
+                        "css",
+                        "sass",
+                        "scss",
+                        "less",
+                        "svelte",
+                    },
+                },
+                lua_ls = {},
+                pyright = {},
+                clangd = {},
+                jdtls = {},
+            }
+
             -- Setup LSP servers
-            lspconfig["html"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-
-            lspconfig["ts_ls"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-
-            lspconfig["cssls"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-
-            lspconfig["tailwindcss"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-
-            lspconfig["emmet_ls"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-                filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" }
-            }
-
-            lspconfig["pyright"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-
-            lspconfig["lua_ls"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-
-            lspconfig["clangd"].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
+            for server, config in pairs(servers) do
+                lspconfig[server].setup(vim.tbl_deep_extend("force", {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                }, config))
+            end
         end,
     },
 }

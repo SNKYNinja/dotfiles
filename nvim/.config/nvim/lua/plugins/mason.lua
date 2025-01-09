@@ -14,8 +14,8 @@ return {
                         package_installed = "",
                         package_pending = "",
                         package_uninstalled = "",
-                    }
-                }
+                    },
+                },
             })
 
             mason_lspconfig.setup({
@@ -28,9 +28,10 @@ return {
                     "lua_ls",
                     "pyright",
                     "clangd",
+                    "jdtls",
                 },
                 automatic_installation = true,
             })
-        end
+        end,
     },
 }
