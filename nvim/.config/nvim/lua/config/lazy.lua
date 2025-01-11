@@ -29,7 +29,7 @@ require("lazy").setup({
 
         { "wakatime/vim-wakatime", lazy = false },
 
-        { "christoomey/vim-tmux-navigator" },
+        -- { "christoomey/vim-tmux-navigator" },
 
         { import = "plugins" },
     },
@@ -43,22 +43,8 @@ require("lazy").setup({
         enabled = false,
     },
     ui = {
-        -- If you are using a Nerd Font: set icons to an empty table which will use the
-        -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-        icons = vim.g.have_nerd_font and {} or {
-            cmd = "⌘",
-            config = "🛠",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            require = "🌙",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-            lazy = "💤 ",
-        },
+        border = "solid",
+        title = "lazy.nvim",
+        size = { width = 0.9, height = 0.9 },
     },
 })

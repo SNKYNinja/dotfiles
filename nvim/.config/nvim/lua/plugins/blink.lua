@@ -10,17 +10,17 @@ return {
         ---@module "blink.cmp"
         ---@type blink.cmp.Config
         opts = {
-            appearance = {
-                use_nvim_cmp_as_default = true,
-                nerd_font_variant = "mono",
-            },
+            -- appearance = {
+            --     use_nvim_cmp_as_default = true,
+            --     nerd_font_variant = "mono",
+            -- },
 
             completion = {
                 accept = { auto_brackets = { enabled = true } },
 
                 documentation = {
                     auto_show = true,
-                    auto_show_delay_ms = 150,
+                    auto_show_delay_ms = 0,
                     treesitter_highlighting = true,
                     window = {
                         border = "rounded",
@@ -36,6 +36,8 @@ return {
                 },
                 menu = {
                     border = "rounded",
+                    scrollbar = false,
+                    scrolloff = 1,
                     winblend = 0,
                     cmdline_position = function()
                         if vim.g.ui_cmdline_pos ~= nil then
@@ -136,7 +138,7 @@ return {
             },
 
             sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
+                default = { "lazydev", "lsp", "path", "snippets", "buffer" },
                 cmdline = function()
                     local type = vim.fn.getcmdtype()
                     -- Search forward and backward
@@ -150,19 +152,24 @@ return {
                     return {}
                 end,
                 providers = {
-                    lsp = {
-                        score_offset = 0, -- Boost/penalize the score of the items
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                        score_offset = 100,
                     },
-                    path = {
-                        min_keyword_length = 0,
-                    },
-                    snippets = {
-                        min_keyword_length = 2,
-                    },
-                    buffer = {
-                        min_keyword_length = 5,
-                        max_items = 10,
-                    },
+                    -- lsp = {
+                    --     score_offset = 0, -- Boost/penalize the score of the items
+                    -- },
+                    -- path = {
+                    --     min_keyword_length = 0,
+                    -- },
+                    -- snippets = {
+                    --     min_keyword_length = 2,
+                    -- },
+                    -- buffer = {
+                    --     min_keyword_length = 5,
+                    --     max_items = 10,
+                    -- },
                 },
             },
         },
