@@ -1,16 +1,18 @@
 return {
     {
         "stevearc/conform.nvim",
+        name = "conform",
         event = { "BufReadPre", "BufNewFile" },
+        keys = {
+            require("mappings").conform(),
+        },
         config = function()
-            local conform = require("conform")
-
             -- NOTE: Add your .clang-format file path to your shell (.bashrc/.zshrc)
 
             -- Example: export CLANG_FORMAT_PATH="$HOME/.clang-format"
             local clang_format_path = vim.fn.getenv("CLANG_FORMAT_PATH") or "/"
 
-            conform.setup({
+            require("conform").setup({
                 formatters_by_ft = {
                     javascript = { "prettier" },
                     typescript = { "prettier" },
@@ -28,9 +30,8 @@ return {
                     java = { "google-java-format" },
                 },
                 format_on_save = {
-                    lsp_fallback = true,
-                    async = false,
-                    timeout_ms = 2000,
+                    lsp_format = "fallback",
+                    timeout_ms = 500,
                 },
                 formatters = {
                     clang_format = { "--style=file:" .. clang_format_path },
@@ -51,26 +52,8 @@ return {
                             "prettier.config.mjs",
                         }),
                     },
-                    ["google-java-format"] = {
-                        -- prepend_args = { "--aosp" }, -- Ensure 4-space indentation
-                        prepend_args = {},
-                    },
                 },
             })
-
-            vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-                conform.format({
-                    lsp_fallback = true,
-                    async = false,
-                    timeout_ms = 500,
-                })
-            end, { desc = "[M]ake [Pretty]" })
-        end,
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        config = function()
-            require("nvim-ts-autotag").setup()
         end,
     },
 }

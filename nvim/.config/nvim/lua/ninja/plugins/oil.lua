@@ -1,7 +1,12 @@
 return {
     {
         "stevearc/oil.nvim",
-        opts = {},
+        name = "oil",
+        cmd = "Oil",
+        lazy = false,
+        keys = function()
+            require("mappings").oil()
+        end,
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("oil").setup({
@@ -31,15 +36,5 @@ return {
             })
         end,
     },
-    {
-        "chrishrb/gx.nvim",
-        keys = { { "gx", "<cmd>Browse<CR>", mode = { "n", "x" } } },
-        cmd = { "Browse" },
-        init = function()
-            vim.g.netrw_nogx = 1 -- disable netrw gx
-        end,
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = true,
-        submodules = false,
-    },
 }
+
