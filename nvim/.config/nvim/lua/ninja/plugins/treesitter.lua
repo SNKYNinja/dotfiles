@@ -25,6 +25,10 @@ return {
                     "java",
                     "dockerfile",
                 },
+                ignore_install = {},
+                sync_install = false,
+                auto_install = false,
+                modules = {},
                 highlight = {
                     enable = true,
                     use_languagetree = true,
@@ -34,4 +38,3 @@ return {
         end,
     },
 }
-
