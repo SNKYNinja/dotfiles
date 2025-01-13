@@ -1,3 +1,7 @@
+-- ╭─────────────────────────────────────────────────────────╮
+-- │                        Lazy.nvim                        │
+-- ╰─────────────────────────────────────────────────────────╯
+
 local conf_path = vim.fn.stdpath("config") --[[@as string]]
 
 local plugins = {
@@ -107,10 +111,13 @@ local plugins = {
             icons = {
                 separator = "│",
             },
-            -- triggers = {
-            --     { "<A>", mode = "n" },
-            -- },
         },
+    },
+
+    {
+        "LudoPinelli/comment-box.nvim",
+        name = "comment-box",
+        lazy = false,
     },
 
     { import = "ninja.plugins" },
