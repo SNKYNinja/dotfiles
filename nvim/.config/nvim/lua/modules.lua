@@ -78,14 +78,14 @@ end
 
 -- Autocommands
 local autocmd = vim.api.nvim_create_autocmd
-vim.b.miniindentscope_disable = true
-autocmd("FileType", {
-    pattern = "help",
-    desc = "Disable 'mini.indentscope' help page",
-    callback = function(data)
-        vim.b[data.buf].miniindentscope_disable = true
-    end,
-})
+-- vim.b.miniindentscope_disable = true
+-- autocmd("FileType", {
+--     pattern = "help",
+--     desc = "Disable 'mini.indentscope' help page",
+--     callback = function(data)
+--         vim.b[data.buf].miniindentscope_disable = true
+--     end,
+-- })
 
 autocmd("LspProgress", {
     ---@param ev {data: {client_id: integer,params: lsp.ProgressParams}}

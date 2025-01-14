@@ -120,6 +120,29 @@ local plugins = {
         lazy = false,
     },
 
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        lazy = false,
+        main = "ibl",
+        opts = {
+            indent = {
+                char = "▏",
+            },
+            scope = {
+                show_start = false,
+                show_end = false,
+                show_exact_scope = false,
+            },
+            exclude = {
+                filetypes = {
+                    "help",
+                    "dashboard",
+                    "NvimTree",
+                },
+            },
+        },
+    },
+
     { import = "ninja.plugins" },
 
     {
