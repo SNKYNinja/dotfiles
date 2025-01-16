@@ -143,6 +143,16 @@ local plugins = {
         },
     },
 
+    -- {
+    --     "barrett-ruth/import-cost.nvim",
+    --     build = "sh install.sh npm",
+    --     -- event = "LazyFile",
+    --     lazy = false,
+    --     config = function()
+    --         require("import-cost").setup()
+    --     end,
+    -- },
+
     { import = "ninja.plugins" },
 
     {
@@ -198,8 +208,8 @@ require("lazy").setup(plugins, {
         notify = false,
     },
     ui = {
-        border = "solid",
-        title = "lazy.nvim",
+        border = "rounded",
+        title = " lazy.nvim 󰒲  ",
         size = { width = 0.9, height = 0.9 },
     },
 })

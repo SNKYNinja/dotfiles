@@ -2,8 +2,6 @@
 -- │                        Mini.nvim                        │
 -- ╰─────────────────────────────────────────────────────────╯
 
-local map = require("mappings").map
-
 return {
     { -- Mini stuff
         "echasnovski/mini.nvim",
@@ -50,11 +48,6 @@ return {
                         },
                     },
                 },
-                hipatterns = {
-                    highlighters = {
-                        hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
-                    },
-                },
                 comment = {},
                 move = {
                     mappings = {
@@ -68,6 +61,46 @@ return {
                         line_up = "<S-k>",
                     },
                 },
+                -- starter = {
+                --     evaluate_single = false,
+                --     header = require("ninja.header").getHeader(3),
+                --     footer = os.date("%B %d, %I:%M %p"),
+                --     content_hooks = {
+                --         require("mini.starter").gen_hook.aligning("center", "center"),
+                --     },
+                --     items = {
+                --         {
+                --             name = "   Bookmarked Files",
+                --             action = "lua MiniExtra.pickers.visit_paths { filter = 'todo' }",
+                --             section = " Actions ", -- Nerd Font terminal icon for Actions section
+                --         },
+                --         {
+                --             name = "   Lazy Update",
+                --             action = ":Lazy update",
+                --             section = " Actions ",
+                --         },
+                --         {
+                --             name = "   Open Blank File",
+                --             action = ":enew",
+                --             section = " Actions ",
+                --         },
+                --         {
+                --             name = "   Find Files",
+                --             action = "lua MiniPick.builtin.files()",
+                --             section = " Actions ",
+                --         },
+                --         {
+                --             name = "   Recent Files",
+                --             action = "lua MiniExtra.pickers.oldfiles()",
+                --             section = " Actions ",
+                --         },
+                --         {
+                --             name = "   Quit",
+                --             action = ":q!",
+                --             section = " Actions ",
+                --         },
+                --     },
+                -- },
             }
 
             for module, config in pairs(configs) do

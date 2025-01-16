@@ -15,6 +15,9 @@ return {
 
             mason.setup({
                 ui = {
+                    border = "rounded",
+                    title = " mason.nvim   ",
+                    size = { width = 0.9, height = 0.9 },
                     icons = {
                         package_installed = "",
                         package_pending = "",
