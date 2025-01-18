@@ -36,8 +36,8 @@ zinit cdreplay -q
 
 # Aliases
 alias ls="ls --color"
-alias update_all="echo -e '\n\e[1;32m🚀 Starting System Update:\e[0m\n\n\e[1;37m>_ \e[4m\e[1;35msudo\e[0m apt update\n\e[1;37m>_ \e[4m\e[1;35msudo\e[0m apt upgrade -y\n' && sudo apt update && sudo apt upgrade -y"
-alias codeforces="echo -e '\n\e[1;34m🦊 Launching Firefox and Codeforces Workspace:\e[0m\n\n\e[1;37m>_ firefox &\n\e[1;37m>_ code ~/Documents/Code/codeforces\n'; firefox 2>/dev/null & code ~/Documents/Code/codeforces"
+alias update_all="echo -e '\n\e[1;32m🚀 Starting System Update:\e[0m\n\n\e[1;37m \e[4m\e[1;35msudo\e[0m apt update\n\e[1;37m \e[4m\e[1;35msudo\e[0m apt upgrade -y\n' && sudo apt update && sudo apt upgrade -y"
+alias codeforces="echo -e '\n\e[1;34m🦊 Launching Firefox and Codeforces Workspace:\e[0m\n\n\e[1;37m firefox &\n\e[1;37m>_ code ~/Documents/Code/codeforces\n'; firefox 2>/dev/null & code ~/Documents/Code/codeforces"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
