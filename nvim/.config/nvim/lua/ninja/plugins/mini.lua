@@ -29,6 +29,9 @@ return {
                         prompt_prefix = "  ",
                     },
                 },
+                bufremove = {
+                    silent = true,
+                },
                 extra = {},
                 visits = {
                     store = {

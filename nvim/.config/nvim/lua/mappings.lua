@@ -5,6 +5,20 @@
 local modules = require("modules")
 local wk = require("which-key")
 
+local icons = {
+    setting = "",
+    lock = "",
+    search = "",
+    git = "",
+    lsp = "󰂓",
+    diag = "",
+    magic = "",
+    tree = "",
+    success = "",
+    failure = "",
+    view = "󰈈",
+}
+
 local function map(mode, keys, action, desc, icon)
     desc = desc or ""
     local opts = { noremap = true, silent = true, desc = desc }
@@ -69,11 +83,11 @@ end
 M.misc = function()
     map("n", "<leader>tm", function()
         modules.toggle_mode()
-    end, "[T]oggle [Mode]", "")
+    end, "[T]oggle [Mode]", icons.setting)
 
     -- map("n", "<leader>tf", function()
     --     modules.toggle_flow()
-    -- end, "[T]oggle [F]low", "")
+    -- end, "[T]oggle [F]low", icons.lock)
 end
 
 M.oil = function()
@@ -86,52 +100,50 @@ M.mini = function()
     local minivisits = require("mini.visits")
     local builtin = minipick.builtin
     local pickers = miniextra.pickers
-    local search = ""
-    local git = ""
 
     map({ "n" }, "<leader>ff", function()
         builtin.files()
-    end, "[F]ind [Files]", search)
+    end, "[F]ind [Files]", icons.search)
 
     map({ "n" }, "<leader>fh", function()
         builtin.help()
-    end, "[F]ind [H]elp", search)
+    end, "[F]ind [H]elp", icons.search)
 
     map({ "n" }, "<leader>fk", function()
         pickers.keymaps()
-    end, "[F]ind [K]eymaps", search)
+    end, "[F]ind [K]eymaps", icons.search)
 
     map({ "n" }, "<leader>fg", function()
         builtin.grep_live()
-    end, "[F]ind [G]rep", search)
+    end, "[F]ind [G]rep", icons.search)
 
     map({ "n" }, "<leader>fr", function()
         builtin.resume()
-    end, "[F]ind [R]esume", search)
+    end, "[F]ind [R]esume", icons.search)
 
     map("n", "<leader>dp", function()
         pickers.diagnostic()
-    end, "[D]iagnostics in [Picker]", search)
+    end, "[D]iagnostics in [Picker]", icons.search)
 
     map("n", "<leader>gh", function()
         pickers.git_hunks()
-    end, "[F]ind Git [H]unks", git)
+    end, "[F]ind Git [H]unks", icons.git)
 
     map("n", "<leader>gc", function()
         pickers.git_commits()
-    end, "[F]ind Git [C]ommits", git)
+    end, "[F]ind Git [C]ommits", icons.git)
 
     map("n", "<A-s>", function()
         miniextra.pickers.visit_paths({ filter = "todo" })
-    end, "Add file to todolist", "")
+    end, "View TodoList", icons.view)
 
     map("n", "<A-a>", function()
         minivisits.add_label("todo")
-    end, "Remove file from todolist", "")
+    end, "Add File to TodoList", icons.success)
 
     map("n", "<A-A>", function()
-        minivisits.remove_label()
-    end, "Remove label from file", "")
+        minivisits.remove_label("todo")
+    end, "Remove File from TodoList", icons.failure)
 end
 
 M.gitsigns = function()
@@ -139,7 +151,37 @@ M.gitsigns = function()
 end
 
 M.lsp = function()
-    -- TODO: Add lsp mappings
+    local minipick = require("mini.pick")
+    vim.ui.select = minipick.ui_select
+
+    -- Diagnostic mappings
+    map("n", "dp", function()
+        vim.diagnostic.goto_prev({ float = false })
+    end, "[D]iagnostic [P]revious", icons.diag)
+
+    map("n", "dn", function()
+        vim.diagnostic.goto_next({ float = false })
+    end, "[D]iagnostic [N]ext", icons.diag)
+
+    map("n", "<leader>df", function()
+        vim.diagnostic.open_float({ border = vim.g.border_style })
+    end, "Open [D]iagnostics [F]loat", icons.diag)
+
+    map("n", "<leader>hi", function()
+        modules.toggle_inlay_hint() -- toggle inlay hint
+    end, "Toggle [I]nlay [H]int", "")
+
+    map("n", "<leader>k", vim.lsp.buf.hover, "LSP Hover")
+
+    -- Lsp mappings
+    map("n", "<leader>ld", vim.lsp.buf.definition, "Goto [L]SP [D]efinition", icons.lsp)
+    map("n", "<leader>lh", vim.lsp.buf.declaration, "Goto [L]SP [D]eclaration", icons.lsp)
+    map("n", "<leader>li", vim.lsp.buf.implementation, "Goto [L]SP [I]mplementation", icons.lsp)
+    map("n", "<leader>lt", vim.lsp.buf.type_definition, "Goto [L]SP [T]ype Definition", icons.lsp)
+    map("n", "<leader>lr", vim.lsp.buf.references, "Goto [L]SP [R]eference", icons.lsp)
+    map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, "[L]SP Code [A]ction", icons.lsp)
+    map("n", "<leader>lc", vim.lsp.buf.rename, "[L]SP [R]ename", icons.lsp)
+    map({ "i", "x" }, "<A-s>", vim.lsp.buf.signature_help, "LSP [S]ignature Help", icons.lsp)
 end
 
 M.conform = function()
@@ -148,16 +190,14 @@ M.conform = function()
             lsp_format = "fallback",
             timeout_ms = 1000,
         })
-    end, "[M]ake [P]retty", "󰉼")
+    end, "[M]ake [P]retty", icons.magic)
 end
 
 M.neotree = function()
-    local tree = ""
-
     -- `show` flag -> no focus
-    map("n", "<leader>ee", "<cmd>Neotree toggle show<CR>", "Neotree Toggle", tree)
-    map("n", "<leader>eg", "<cmd>Neotree git_status show<CR>", "Neotree Git Status", tree)
-    map("n", "<leader>eb", "<cmd>Neotree buffers<CR> show", "Neotree Buffers", tree)
+    map("n", "<leader>ee", "<cmd>Neotree toggle show<CR>", "Neotree Toggle", icons.tree)
+    map("n", "<leader>eg", "<cmd>Neotree git_status show<CR>", "Neotree Git Status", icons.tree)
+    map("n", "<leader>eb", "<cmd>Neotree buffers<CR> show", "Neotree Buffers", icons.tree)
 end
 
 return M

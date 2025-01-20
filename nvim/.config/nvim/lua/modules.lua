@@ -34,6 +34,7 @@ local current_index = 1
 
 function M.toggle_mode()
     local mode = modes[current_index]
+    local current_buf = vim.api.nvim_get_current_buf()
 
     -- Set options based on the selected mode
     vim.opt.relativenumber = mode.rnum
@@ -43,9 +44,9 @@ function M.toggle_mode()
     -- Toggle barbecue and gitsigns based on mode
     require("barbecue.ui").toggle(mode.bbq)
     if mode.gitsigns then
-        require("gitsigns").attach()
+        require("gitsigns").attach(current_buf)
     else
-        require("gitsigns").detach()
+        require("gitsigns").detach(current_buf)
     end
 
     -- Cycle through the modes

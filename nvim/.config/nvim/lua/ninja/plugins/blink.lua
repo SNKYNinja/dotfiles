@@ -39,6 +39,7 @@ return {
                         columns = {
                             { "kind_icon" },
                             { "label", "kind", gap = 5 },
+                            { "source_name" },
                         },
                         components = {
                             kind_icon = { -- sets lspkind for kind_icon
