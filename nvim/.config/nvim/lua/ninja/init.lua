@@ -143,6 +143,11 @@ local plugins = {
         },
     },
 
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        lazy = false,
+    },
+
     -- {
     --     "barrett-ruth/import-cost.nvim",
     --     build = "sh install.sh npm",
