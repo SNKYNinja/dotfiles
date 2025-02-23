@@ -43,12 +43,12 @@ return {
                 surround = {}, -- TODO: Learn mini.surround
                 pairs = {
                     mappings = {
-                        ["<"] = {
-                            action = "closeopen",
-                            pair = "<>",
-                            neigh_pattern = "[^\\].", -- ignore \>
-                            register = { cr = false },
-                        },
+                        -- ["<"] = {
+                        --     action = "closeopen",
+                        --     pair = "<>",
+                        --     neigh_pattern = "[^\\].", -- ignore \>
+                        --     register = { cr = false },
+                        -- },
                     },
                 },
                 comment = {},

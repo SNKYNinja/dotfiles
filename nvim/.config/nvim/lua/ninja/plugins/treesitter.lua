@@ -29,6 +29,7 @@ return {
                     "cpp",
                     "java",
                     "dockerfile",
+                    "bash",
                 },
                 ignore_install = {},
                 sync_install = false,
@@ -41,5 +42,11 @@ return {
                 indent = { enable = true },
             })
         end,
+
+        vim.filetype.add({
+            pattern: {
+                [".env.*"] = "sh"
+            }
+        })
     },
 }

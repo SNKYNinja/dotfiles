@@ -18,7 +18,7 @@ return {
         },
         opts = {
             close_if_last_window = true,
-            enable_git_status = false,
+            enable_git_status = true,
             sources = { "filesystem", "buffers", "document_symbols" },
             filesystem = {
                 use_libuv_file_watcher = true,

@@ -11,15 +11,15 @@ return {
         keys = {
             require("mappings").map({ "n" }, "<leader>o", function()
                 require("snacks").scratch()
-            end, "[O]pen Scratch Pad"),
+            end, "[O]pen Scratch Pad", ""),
 
             require("mappings").map({ "n" }, "<leader>un", function()
                 require("snacks").notifier.hide()
-            end, "Hide Notification"),
+            end, "Hide Notification", "󰵅"),
 
             require("mappings").map({ "n" }, "<Leader>uh", function()
                 require("snacks").notifier.show_history()
-            end, "Show Notification History"),
+            end, "Show Notification History", "󰵅"),
         },
         event = { "BufReadPost" },
         opts = {
@@ -35,16 +35,16 @@ return {
             -- indent = {
             --     enabled = true,
             -- }
-            -- dashboard = { -- TODO: Customize Dashboard
-            --     enabled = true,
-            --     preset = {
-            --         header = require("ninja.header").getHeader(),
-            -- },
-            -- sections = {
-            --     { section = "keys", gap = 1, padding = 1 },
-            --     { section = "startup" },
-            -- },
-            -- },
+            dashboard = { -- TODO: Customize Dashboard
+                enabled = true,
+                preset = {
+                    header = require("ninja.header").getHeader(3),
+                },
+                sections = {
+                    { section = "keys", gap = 1, padding = 1 },
+                    { section = "startup" },
+                },
+            },
             statuscolumn = { enabled = true },
         },
     },

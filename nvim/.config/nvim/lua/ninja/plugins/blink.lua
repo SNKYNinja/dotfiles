@@ -17,18 +17,23 @@ return {
             keymap = { preset = "enter" },
             sources = { -- sources for completion
                 cmdline = { enabled = false },
-                default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+                default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown" },
                 providers = {
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
                         score_offset = 100,
                     },
+                    markdown = {
+                        name = "RenderMarkdown",
+                        module = "render-markdown.integ.blink",
+                        fallbacks = { "lsp" },
+                    },
                 },
             },
             completion = { -- completion options
                 accept = {
-                    auto_brackets = { enabled = true },
+                    auto_brackets = { enabled = false },
                 },
                 menu = {
                     border = vim.g.border_style,

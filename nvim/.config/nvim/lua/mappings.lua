@@ -171,7 +171,7 @@ M.lsp = function()
         modules.toggle_inlay_hint() -- toggle inlay hint
     end, "Toggle [I]nlay [H]int", "")
 
-    map("n", "<leader>k", vim.lsp.buf.hover, "LSP Hover")
+    map("n", "<leader>k", vim.lsp.buf.hover, "LSP Hover", icons.lsp)
 
     -- Lsp mappings
     map("n", "<leader>ld", vim.lsp.buf.definition, "Goto [L]SP [D]efinition", icons.lsp)
