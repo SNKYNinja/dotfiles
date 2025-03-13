@@ -5,13 +5,13 @@
 return {
     {
         "vyfor/cord.nvim",
-        branch = "client-server",
+        branch = "master",
         build = ":Cord update",
         event = "VeryLazy",
         opts = {
             advanced = {
                 plugin = {
-                    log_level = vim.log.levels.OFF,
+                    -- log_level = vim.log.levels.OFF,
                 },
             },
         },

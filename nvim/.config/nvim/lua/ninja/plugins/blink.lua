@@ -16,7 +16,6 @@ return {
         opts = {
             keymap = { preset = "enter" },
             sources = { -- sources for completion
-                cmdline = { enabled = false },
                 default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown" },
                 providers = {
                     lazydev = {
@@ -29,6 +28,12 @@ return {
                         module = "render-markdown.integ.blink",
                         fallbacks = { "lsp" },
                     },
+                },
+            },
+            cmdline = {
+                completion = {
+                    ghost_text = { enabled = true },
+                    menu = { auto_show = true },
                 },
             },
             completion = { -- completion options
