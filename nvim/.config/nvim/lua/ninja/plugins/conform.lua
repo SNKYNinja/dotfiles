@@ -26,7 +26,7 @@ return {
                     html = { "prettier" },
                     json = { "fixjson" },
                     yaml = { "prettier" },
-                    markdown = { "prettier" },
+                    -- markdown = { "prettier" },
                     lua = { "stylua" },
                     python = { "isort", "black" },
                     c = { "clang-format" },

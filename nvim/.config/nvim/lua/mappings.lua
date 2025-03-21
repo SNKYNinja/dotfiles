@@ -53,7 +53,7 @@ M.general = function()
     map("i", "<C-c>", "<esc>")
 
     -- Save only on new changes
-    map("n", "<C-s>", "<cmd>update<CR>")
+    map("n", "<C-a>", "<cmd>update<CR>")
 
     -- Switching splits
     map("n", "<C-h>", "<C-w>h")

@@ -11,7 +11,7 @@ return {
         keys = function()
             require("mappings").oil()
         end,
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
         config = function()
             require("oil").setup({
                 default_file_explorer = true,
