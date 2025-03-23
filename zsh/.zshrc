@@ -66,9 +66,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-# Set brew package manager
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -76,3 +73,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/home/ninja/.spicetify
 
 export CLANG_FORMAT_PATH="$HOME/.clang-format"
+
+export PATH=$PATH:/home/aditya/.spicetify
+
+export LANG=en_IN.utf8
+export LC_ALL=en_IN.utf8
